@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page </title>
+  </head>
+  <body class="admin">
+	  
+	  <header role="banner">
+
+		  
+	  
+	  </header>	
+	    
+	  <main>
+		  <div class="row">
+			  <div class="columns large-12 large-centered">
+		  
+
+				
+				<div class="section-content">
+					
+					<section>
+						<div class="row">
+							<div class="columns medium-3">
+						
+								<p>These requests were returned to the students for additional information or clarification.</p>
+								
+							</div>
+							<div class="columns medium-9">
+								
+								<form  class="sfe">
+								
+							
+								
+								<table class="picklist">
+									<thead>
+									<tr>
+										<th class="act-col"><input type="checkbox" id="all" onchange="toggleCheckboxes(this)"><label for="all">Select all</label><span></span></th>
+									
+										<th class="table-date">Date</th>
+										
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td class="act-col"><input type="checkbox" id="ch" ><label for="ch">James Slade</label><span></span></td>
+									
+										<td>10/12/17</td>
+										
+									</tr>
+									<tr>
+										<td class="act-col"><input type="checkbox" id="sd"><label for="sd">Floyd Cooper</label><span></span></td>
+								
+										<td>10/01/17</td>
+									</tr>
+									<tr >
+										<td class="act-col"><input type="checkbox" id="tr" ><label for="tr">Beth Jackson</label><span></span></td>
+									
+										<td>08/12/17</td>
+									</tr>
+									<tr>
+										<td class="act-col"><input type="checkbox" id="cfh" ><label for="cfh">Christina Cross</label><span></span></td>
+									
+										<td>03/12/17</td>
+									</tr>
+									</tbody>
+								</table>
+								
+								<input id="highlight" type="button" class="button" value="Highlight selected rows">
+								</form>
+								
+							</div>
+						</div>
+						
+					</section>
+		   	
+				</div>			   
+				  
+			 </div>
+		  </div>
+	  </main>
+	  
+
+	  
+	  <footer role="contentinfo">
+
+		  
+	  </footer>
+
+    
+
+  </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	// Added 'select all' functionality - add on functionality
+    function toggleCheckboxes(checkbox) {
+      const checkboxes = document.querySelectorAll(".picklist tbody input[type='checkbox']");
+      checkboxes.forEach(item => {
+        item.checked = checkbox.checked;
+      });
+    }
+
+	//Procedure used to highlight selected rows
+    function highlightSelectedRows(tableSelector, highlightClass) {
+		$(document).on("click", "#highlight", function() {
+        $(`${tableSelector} tbody tr`).each(function() {
+          var checkbox = $(this).find("input[type='checkbox']");
+          var row = $(this);
+          if (checkbox.is(":checked")) {
+            row.addClass(highlightClass);
+          } else {
+            row.removeClass(highlightClass);
+          }
+        });
+      });
+    }
+
+	$(document).ready(function() {
+      highlightSelectedRows("table.picklist", "highlight");
+    });
+  </script>
+<style>
+
+
+body {
+  margin: 5em;
+  padding: 0;
+  background: #ecf3fa;
+  font-family: "Lato", Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.highlight{
+	background: yellow;
+}
+
+button {
+  padding: 0;
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  line-height: 1; }
+  [data-whatinput='mouse'] button {
+    outline: 0; }
+</style>
+
+
+</html>
